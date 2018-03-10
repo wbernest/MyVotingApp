@@ -1,7 +1,10 @@
-.thing-form {
+.search-form{
   margin: 20px 0;
 }
-
+.create-vote-form {
+  margin: 30px;
+  text-align: center;
+}
 #banner {
   border-bottom: none;
   margin-top: -20px;
@@ -19,7 +22,7 @@
   color: #F5F5F5;
   text-align: center;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-  background: #4393B9;
+  background: rgb(55, 185, 181);
 }
 
 .navbar-text {
