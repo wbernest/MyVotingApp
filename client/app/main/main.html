@@ -13,14 +13,9 @@
     </form>
   
       <h1 class="page-header">Top Votes:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in $ctrl.awesomeThings">
+      <ul ng-repeat="thing in $ctrl.topVotes">
         <li><a href="#" uib-tooltip="{{thing.info}}">{{thing.name}}</a></li>
-      </ul>
-
-      <form class="create-vote-form">
-        <button type="submit" class="btn btn-primary" ng-click="$ctrl.addThing()">Create Vote!</button>
-      </form>
-    
+      </ul>    
     </div>
   </div>
 

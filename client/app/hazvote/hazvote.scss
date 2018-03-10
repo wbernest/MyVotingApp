@@ -1,0 +1,19 @@
+hazvote {
+    div.container{
+        margin-top: 20px;
+    }
+    div > div > form{
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-right: 200px;
+        padding-left: 200px;
+
+        div.row{
+            margin-left: 0;
+        }
+        input.option{
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+    }
+}

@@ -3,38 +3,43 @@ import uiRouter from 'angular-ui-router';
 import routing from './main.routes';
 
 export class MainController {
-  awesomeThings = [];
+  topVotes = [];
   newThing = '';
 
   /*@ngInject*/
-  constructor($http, $scope, socket) {
+  constructor($http, $scope, socket, Auth) {
     this.$http = $http;
     this.socket = socket;
+    this.Auth = Auth;
 
     $scope.$on('$destroy', function() {
-      socket.unsyncUpdates('thing');
+      socket.unsyncUpdates('vote');
     });
   }
 
   $onInit() {
-    this.$http.get('/api/things')
+    this.$http.get('/api/votes')
       .then(response => {
-        this.awesomeThings = response.data;
-        this.socket.syncUpdates('thing', this.awesomeThings);
+        this.topVotes = response.data;
+        this.socket.syncUpdates('vote', this.topVotes);
       });
   }
 
-  addThing() {
-    if(this.newThing) {
-      this.$http.post('/api/things', {
-        name: this.newThing
+  addVote() {
+    if(this.newVote) {
+      this.$http.post('/api/votes', {
+        name: this.newVote
       });
-      this.newThing = '';
+      this.newVote = '';
     }
   }
 
-  deleteThing(thing) {
-    this.$http.delete(`/api/things/${thing._id}`);
+  deleteVote(vote) {
+    this.$http.delete(`/api/votes/${vote._id}`);
+  }
+
+  hideButton(){
+    return this.Auth.isLoggedInSync();
   }
 }
 
