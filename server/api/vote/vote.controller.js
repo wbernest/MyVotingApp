@@ -2,7 +2,7 @@
  * Using Rails-like standard naming convention for endpoints.
  * GET     /api/votes              ->  index
  * POST    /api/votes              ->  create
- * GET     /api/votes/:id          ->  show
+ * GET     /api/votes/:name        ->  show
  * PUT     /api/votes/:id          ->  upsert
  * PATCH   /api/votes/:id          ->  patch
  * DELETE  /api/votes/:id          ->  destroy
@@ -73,7 +73,7 @@ export function index(req, res) {
 
 // Gets a single Vote from the DB
 export function show(req, res) {
-  return Vote.findById(req.params.id).exec()
+  return Vote.find({name: req.params.name}).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));

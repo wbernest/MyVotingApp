@@ -20,38 +20,3 @@ main {
   }
 }
 
-banner {
-  border-bottom: none;
-  margin-top: -20px;
-  h1 {
-      font-size: 60px;
-      line-height: 1;
-      letter-spacing: -1px;
-    }
-    
-    .hero-unit {
-      position: relative;
-      padding: 30px 15px;
-      color: #F5F5F5;
-      text-align: center;
-      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-      background: rgb(55, 185, 181);
-    }    
-}
-
-poll > div.container{
-  margin-top: 20px;
- 
- form{
-     padding-top: 20px;
-     padding-bottom: 20px;
-
-     div.row{
-         margin-left: 0;
-     }
-     input.option{
-         margin-top: 5px;
-         margin-bottom: 5px;
-     }
- }   
-}
