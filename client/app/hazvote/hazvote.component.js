@@ -36,6 +36,7 @@ export class HazvoteComponent {
   }
 
   canSubmit(){
+    var ctrl = this;
     if(this.voteName.length == 0)
       return true;
     if(this.voteOptions.length == 0)
@@ -44,11 +45,16 @@ export class HazvoteComponent {
       return true;
 
     var flag = false;
-    _.each(this.voteOptions, function(o,i){
+    _.each(ctrl.voteOptions, (o,i) => {
       if(o.name.length == 0){
         flag = true;
         return false;
       } 
+      if(ctrl.voteOptions.findIndex(x => x.name == o.name) < i){
+        flag = true;
+        return false;
+      } 
+
     });
     return flag;
   }
