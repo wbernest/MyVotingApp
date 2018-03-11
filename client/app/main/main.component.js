@@ -7,26 +7,22 @@ export class MainController {
   newThing = '';
 
   /*@ngInject*/
-  constructor($http, $scope, socket, Auth) {
+  constructor($http, $scope,  Auth) {
+    'ngInject'
     this.$http = $http;
-    this.socket = socket;
     this.Auth = Auth;
-
-    $scope.$on('$destroy', function() {
-      socket.unsyncUpdates('vote');
-    });
-  }
-
-  $onInit() {
-    this.$http.get('/api/votes')
-      .then(response => {
-        this.topVotes = response.data;
-        this.socket.syncUpdates('vote', this.topVotes);
+    this.user = "";
+    Auth.getCurrentUser().then( x => {
+      this.user = x.email;
+      this.$http.get('/api/votes').then(response => {
+        if(this.user == "") this.topVotes = response.data;
+        else{
+          this.topVotes = response.data.filter(x => x.user != this.user);
+          this.myVotes = response.data.filter(x => x.user == this.user);
+        }
       });
-  }
 
-  deleteVote(vote) {
-    this.$http.delete(`/api/votes/${vote._id}`);
+    });
   }
 }
 

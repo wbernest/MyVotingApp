@@ -1,9 +1,6 @@
 main {
   .container{
     margin-top: 20px;
-    padding-right: 200px;
-    padding-left: 200px;
-
   }
   .search-form {
     margin: 20px 0;
@@ -13,8 +10,9 @@ main {
     margin: 30px;
     text-align: center;
   }
-
-  
+  ul{
+    overflow: auto
+  }
   li{
     list-style-type: none;
   }

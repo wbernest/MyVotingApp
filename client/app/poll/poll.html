@@ -11,8 +11,9 @@
                 </div>
                 
                 <div class="row">
-                    <button class="btn btn-primary" ng-click="pollCtrl.addOption()">Add Option</button>
-                    <button class="btn btn-primary" ng-click="pollCtrl.submit()" ng-disabled="pollCtrl.canSubmit()">Vote</button>        
+                    <button class="btn btn-primary" ng-click="pollCtrl.addOption()" ng-disabled="pollCtrl.canAddOption()">Add Option</button>
+                    <button class="btn btn-primary" ng-click="pollCtrl.submit()" >Vote</button>
+                    <button class="btn btn-primary" ng-click="pollCtrl.delete()" ng-show="pollCtrl.canDeletePoll()">Delete Poll</button>                
                 </div>
             </form>
         </div>

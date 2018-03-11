@@ -8,12 +8,12 @@ import _ from 'lodash';
 
 export class HazvoteComponent {
   /*@ngInject*/
-  constructor($http, Auth) {
+  constructor($http, Auth, $state) {
     this.$http = $http;
     this.voteName = '';
     this.voteOptions = [];
     this.user = '';
-
+    this.$state = $state;
     Auth.getCurrentUser().then( x => this.user = x.email);
   }
 
@@ -22,10 +22,15 @@ export class HazvoteComponent {
   }
 
   submit(){
-    this.$http.post('/api/votes', {
-      name: this.voteName,
-      options: this.voteOptions,
-      user: this.user
+    this.$http.get('/api/votes/' + this.voteName).then(response => {
+      if(response.data.length != 0) alert(this.voteName + " already exists, please choose another name");
+      else{
+        this.$http.post('/api/votes', {
+          name: this.voteName,
+          options: this.voteOptions,
+          user: this.user
+        }).then(x => this.$state.go('poll', {pollName: this.voteName}));    
+      }
     });
 
   }

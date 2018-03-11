@@ -6,13 +6,15 @@ import Chart from 'chart.js'
 
 export class PollComponent {
   /*@ngInject*/
-  constructor($scope, $http, Auth) {
+  constructor($scope, $http, Auth, $state) {
     'ngInject'
     this.$http = $http;
     this.pollName = $scope.$parent.pollName;
     this.poll;
     this.user = '';
     this.optionCounter;
+    this.chart = null;
+    this.$state = $state;
 
     Auth.getCurrentUser().then( x => this.user = x.email);
     $http.get('/api/votes/'+this.pollName).then(x => {
@@ -23,7 +25,13 @@ export class PollComponent {
   }
 
   addOption(){
-    this.voteOptions.push({name: '', count: 0});
+    var newOption = prompt("Enter a new option:", "");
+    if(newOption.length == 0) alert("Option name can not be empty.") 
+    else if(this.poll.options.map(x => x.name.toLowerCase()).indexOf(newOption.toLowerCase()) >= 0) alert("Option already exists.")
+    else{
+      this.poll.options.push({name: newOption, count: 0});
+      this.$http.put('/api/votes/'+this.poll._id, this.poll).then(x => this.createChart());
+    }
   }
 
   submit(){
@@ -31,8 +39,13 @@ export class PollComponent {
     this.$http.put('/api/votes/'+this.poll._id, this.poll).then(x => this.createChart());
   }
 
+  delete(){
+    this.$http.delete('/api/votes/'+this.poll._id).then(x => this.$state.go('main'));
+  }
+
   createChart(){
-    var chart = new Chart("mychart",{
+    if(this.chart != null) this.chart.destroy();
+    this.chart = new Chart("mychart",{
       type: 'bar',
       data: {
           labels: this.poll.options.map(x => x.name),
@@ -74,22 +87,15 @@ export class PollComponent {
   })
   }
 
-  canSubmit(){
+  canAddOption(){
     if(this.user.length == 0)
       return true;
-
-    var flag = false;
-    _.each(this.voteOptions, function(o,i){
-      if(o.name.length == 0){
-        flag = true;
-        return false;
-      } 
-    });
-    return flag;
   }
 
-
-
+  canDeletePoll(){
+    if(this.poll != undefined && this.user == this.poll.user)
+      return true;
+  }
 }
 
 export default angular.module('myVotingAppApp.poll', [uiRouter])

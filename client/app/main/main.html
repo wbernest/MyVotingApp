@@ -2,16 +2,21 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">  
-      <form class="search-form">
+    <div class="col-md-6 col-lg-6">  
+      <!--<form class="search-form">
           <input type="text" class="form-control" placeholder="Search Votes!" ng-model="$ctrl.newThing">
-    </form>
+      </form>-->
   
-      <h1 class="page-header">Top Votes:</h1>
+      <h1 class="page-header">Others Votes</h1>
       <ul ng-repeat="thing in $ctrl.topVotes">
-        <li><a ui-sref="poll({pollName: thing.name})">{{thing.name}}</a></li>
+        <li><a ui-sref="poll({pollName: thing.name})" key="{{thing.name}}">{{thing.name}}</a></li>
       </ul>    
     </div>
+    <div class="col-md-6 col-lg-6">  
+        <h1 class="page-header">My Votes</h1>
+        <ul ng-repeat="myvote in $ctrl.myVotes">
+          <li><a ui-sref="poll({pollName: myvote.name})" key="{{myvote.name}}">{{myvote.name}}</a></li>
+        </ul>      
+    </div>
   </div>
-
 </div>
