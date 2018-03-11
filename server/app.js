@@ -4,12 +4,12 @@
 
 'use strict';
 
-var express = require('express');
-var mongoose = require ('mongoose');
+import express from 'express';
+import mongoose from 'mongoose';
 mongoose.Promise = require('bluebird');
-var config = require( './config/environment');
-var http = require('http');
-var seedDatabaseIfNeeded = require('./config/seed');
+import config from './config/environment';
+import http from 'http';
+import seedDatabaseIfNeeded from './config/seed';
 
 // Connect to MongoDB
 mongoose.connect(config.mongo.uri, config.mongo.options);

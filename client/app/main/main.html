@@ -1,6 +1,6 @@
 <banner text="You Can Haz Votes!"></banner>
 
-<div class="container">
+<div class="container" ng-style="{height: $ctrl.height}">
   <div class="row">
     <div class="col-md-6 col-lg-6">  
       <!--<form class="search-form">
@@ -8,14 +8,14 @@
       </form>-->
   
       <h1 class="page-header">Others Votes</h1>
-      <ul ng-repeat="thing in $ctrl.topVotes">
-        <li><a ui-sref="poll({pollName: thing.name})" key="{{thing.name}}">{{thing.name}}</a></li>
+      <ul>
+        <li ng-repeat="thing in $ctrl.topVotes"><a ui-sref="poll({pollName: thing.name})" key="{{thing.name}}">{{thing.name}}</a></li>
       </ul>    
     </div>
     <div class="col-md-6 col-lg-6">  
         <h1 class="page-header">My Votes</h1>
-        <ul ng-repeat="myvote in $ctrl.myVotes">
-          <li><a ui-sref="poll({pollName: myvote.name})" key="{{myvote.name}}">{{myvote.name}}</a></li>
+        <ul >
+          <li ng-repeat="myvote in $ctrl.myVotes"><a ui-sref="poll({pollName: myvote.name})" key="{{myvote.name}}">{{myvote.name}}</a></li>
         </ul>      
     </div>
   </div>

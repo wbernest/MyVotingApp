@@ -1,7 +1,7 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import routing from './main.routes';
-
+import $ from 'jquery';
 export class MainController {
   topVotes = [];
   newThing = '';
@@ -12,6 +12,7 @@ export class MainController {
     this.$http = $http;
     this.Auth = Auth;
     this.user = "";
+    this.height = window.innerHeight - 360 - 70;
     Auth.getCurrentUser().then( x => {
       this.user = x.email;
       this.$http.get('/api/votes').then(response => {
