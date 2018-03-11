@@ -1,9 +1,4 @@
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <img src="assets/images/cattie.jpg" alt="I'm Yeoman">
-    <h1>You Can Haz Votes!</h1>
-  </div>
-</header>
+<banner text="You Can Haz Votes!"></banner>
 
 <div class="container">
   <div class="row">
@@ -14,7 +9,7 @@
   
       <h1 class="page-header">Top Votes:</h1>
       <ul ng-repeat="thing in $ctrl.topVotes">
-        <li><a href="#" uib-tooltip="{{thing.info}}">{{thing.name}}</a></li>
+        <li><a ui-sref="poll({pollName: thing.name})">{{thing.name}}</a></li>
       </ul>    
     </div>
   </div>

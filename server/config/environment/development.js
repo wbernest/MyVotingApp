@@ -7,7 +7,7 @@ module.exports = {
 
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/myvotingapp-dev'
+    uri: 'mongodb://service:1234@ds163918.mlab.com:63918/wbernest-voter-db'
   },
 
   // Seed database on startup

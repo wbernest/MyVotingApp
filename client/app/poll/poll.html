@@ -1,0 +1,23 @@
+<banner text="You Can Votes!"></banner>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <form class="vote-form">
+                <label>Name:</label>
+                <input type="text" class="form-control option" placeholder="New Vote" ng-model="pollCtrl.voteName">
+                
+                <label>Options:</label>
+                <input ng-repeat="option in pollCtrl.voteOptions" type="text" class="form-control option" placeholder="New Option" ng-model="option.name">
+                
+                <div class="row">
+                    <button class="btn btn-primary" ng-click="pollCtrl.addOption()">Add Option</button>
+                    <button class="btn btn-primary" ng-click="pollCtrl.submit()" ng-disabled="pollCtrl.canSubmit()">Vote</button>        
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-8">
+
+        </div>
+    </div>
+</div>

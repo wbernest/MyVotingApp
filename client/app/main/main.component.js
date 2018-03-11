@@ -25,21 +25,8 @@ export class MainController {
       });
   }
 
-  addVote() {
-    if(this.newVote) {
-      this.$http.post('/api/votes', {
-        name: this.newVote
-      });
-      this.newVote = '';
-    }
-  }
-
   deleteVote(vote) {
     this.$http.delete(`/api/votes/${vote._id}`);
-  }
-
-  hideButton(){
-    return this.Auth.isLoggedInSync();
   }
 }
 

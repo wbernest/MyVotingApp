@@ -23,15 +23,16 @@ import navbar from '../components/navbar/navbar.component';
 import footer from '../components/footer/footer.component';
 import main from './main/main.component';
 import hazvote from './hazvote/hazvote.component';
+import poll from './poll/poll.component'
 import constants from './app.constants';
 import util from '../components/util/util.module';
 import socket from '../components/socket/socket.service';
-
+import banner from './banner/banner.directive';
 import './app.scss';
 
 angular.module('myVotingAppApp', [ngCookies, ngResource, ngSanitize, 'btford.socket-io', uiRouter,
   uiBootstrap, _Auth, account, admin, 'validation.match', navbar, footer, main, constants,
-  socket, util, hazvote
+  socket, util, hazvote, poll, banner
 ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {

@@ -1,34 +1,57 @@
-.search-form{
-  margin: 20px 0;
+main {
+  .container{
+    margin-top: 20px;
+    padding-right: 200px;
+    padding-left: 200px;
+
+  }
+  .search-form {
+    margin: 20px 0;
+  }
+
+  .create-vote-form {
+    margin: 30px;
+    text-align: center;
+  }
+
+  
+  li{
+    list-style-type: none;
+  }
 }
-.create-vote-form {
-  margin: 30px;
-  text-align: center;
-}
-#banner {
+
+banner {
   border-bottom: none;
   margin-top: -20px;
+  h1 {
+      font-size: 60px;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+    
+    .hero-unit {
+      position: relative;
+      padding: 30px 15px;
+      color: #F5F5F5;
+      text-align: center;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+      background: rgb(55, 185, 181);
+    }    
 }
 
-#banner h1 {
-  font-size: 60px;
-  line-height: 1;
-  letter-spacing: -1px;
-}
+poll > div.container{
+  margin-top: 20px;
+ 
+ form{
+     padding-top: 20px;
+     padding-bottom: 20px;
 
-.hero-unit {
-  position: relative;
-  padding: 30px 15px;
-  color: #F5F5F5;
-  text-align: center;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-  background: rgb(55, 185, 181);
-}
-
-.navbar-text {
-  margin-left: 15px;
-}
-
-li{
-  list-style-type: none;
+     div.row{
+         margin-left: 0;
+     }
+     input.option{
+         margin-top: 5px;
+         margin-bottom: 5px;
+     }
+ }   
 }
