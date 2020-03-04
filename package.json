@@ -19,7 +19,7 @@
     "bluebird": "^3.3.3",
     "body-parser": "^1.13.3",
     "bootstrap": "~3.3.7",
-    "bootstrap-sass": "~3.3.7",
+    "bootstrap-sass": "~3.4.1",
     "chart.js": "^2.7.2",
     "composable-middleware": "^0.3.0",
     "compression": "^1.7.1",
